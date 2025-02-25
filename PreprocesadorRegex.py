@@ -1,8 +1,3 @@
-'''
-prepara la expresión regular para que posteriormente pueda ser 
-convertida a una estructura como un árbol de sintaxis o a un autómata. 
-'''
-
 
 def is_operator(c):
     return c in {'|', '.', '*', '(', ')', '#'}
