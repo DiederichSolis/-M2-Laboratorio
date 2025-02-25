@@ -1,10 +1,10 @@
 import os
 import time
 import json
-from Shunting_yard import toPostFix
+from Parte2.Shunting_yard import toPostFix
 from Parte2.regexaAFN import toAFN
-from AFNaAFD import fromAFNToAFD
-from minimizador import minimize_afd
+from Parte2.AFNaAFD import fromAFNToAFD
+from Parte2.minimizador import minimize_afd
 import graphviz
 from colorama import Fore, Style, init
 

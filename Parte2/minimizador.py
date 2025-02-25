@@ -29,6 +29,6 @@ def minimize_afd(afd):
             minimized_accepted.add(representative)
 
     return {
-        'transiciones': minimized_transitions,
-        'aceptado': list(minimized_accepted)
+        'transitions': minimized_transitions,
+        'accepted': list(minimized_accepted)
     }

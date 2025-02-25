@@ -37,7 +37,7 @@ while True:
     minimized_afd = minimize_afd(afd_dict)
     minimized_afd.render(f"{regex_folder}/afd_minimized", format="png", cleanup=True)
 
-    print(f"\n🔹 Diagramas generados en: {regex_folder}")
+    print(f"\n Diagramas generados en: {regex_folder}")
     
     while True:
         string = input("\nIngrese una cadena para verificar (si desea cambiar de regex escriba cambio: ")
@@ -45,8 +45,8 @@ while True:
             break
         
         if validate_string(afd_dict, string):
-            print(f"La cadena '{string}' ES ACEPTADA por la expresión regular.")
+            print(f"- La cadena '{string}' ES ACEPTADA 🟢 por la expresión regular.")
         else:
-            print(f"La cadena '{string}' FUE RECHAZADA por la expresión regular.")
+            print(f"- La cadena '{string}' FUE RECHAZADA 🔴 por la expresión regular.")
 
 print("\nFINALIZACION")

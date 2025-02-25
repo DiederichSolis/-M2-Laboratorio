@@ -1,4 +1,4 @@
-from Parte2.regexaAFN import toAFN
+from Parte2.regexaAFN  import toAFN
 from pprint import pp
 
 type AFDState = frozenset[int]
@@ -6,13 +6,14 @@ type AFDTransitions = dict[AFDState, dict[str, AFDState]]
 
 
 def fromAFNToAFD(afn):
+
     afdTransitions: AFDTransitions = {}
     closure, inputs = findClosure(afn, 0, set(()))
     travelAFN(afn, frozenset(closure), frozenset(inputs), afdTransitions)
 
     accepted = []
     for state in afdTransitions:
-        if afn["aceptado"] in state:
+        if afn["accepted"] in state:
             accepted.append(state)
 
     return newAFD(afdTransitions, accepted)
@@ -36,7 +37,7 @@ def travelAFN(
         reach = set(())
         reachInputs = set(())
         for stateIdx in closure:
-            state = afn["transiciones"][stateIdx]
+            state = afn["transitions"][stateIdx]
             if i not in state:
                 continue
             for targetIdx in state[i]:
@@ -57,14 +58,14 @@ def findClosure(afn: dict, stateIdx: int, alreadyEvaluated: set) -> tuple[set, s
 
     alreadyEvaluated.add(stateIdx)
 
-    original = afn["transiciones"][stateIdx]
-    closure = set([stateIdx])  
+    original = afn["transitions"][stateIdx]
+    closure = set([stateIdx]) 
     inputs = set(original.keys()) 
 
     if "_" in original:
         for state in original["_"]:
             foundClosure, foundInputs = findClosure(afn, state, alreadyEvaluated)
-            closure |= set(foundClosure) 
+            closure |= set(foundClosure)  
             inputs |= set(foundInputs)
 
     return (closure, inputs)
@@ -77,7 +78,7 @@ def initializeOrAppend():
 
 def newAFD(transitions: AFDTransitions, accepted: list[AFDState]):
 
-    return {"transiciones": transitions, "aceptado": accepted}
+    return {"transitions": transitions, "accepted": accepted}
 
 
 if __name__ == "__main__":
