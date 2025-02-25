@@ -13,13 +13,13 @@ while True:
         print("¡Generador de AFD! ")
         break
 
-    # Convertir regex a postfix y construir árbol sintáctico
+
     postfix = to_postfix(regex + "#")
     root, positions = build_syntax_tree(postfix)
     followpos = compute_followpos(root, positions)
 
     # Crear carpeta específica para la regex
-    regex_folder = f"regex-images-afddirect/{regex}"
+    regex_folder = f"resultados_images/{regex}"
     os.makedirs(regex_folder, exist_ok=True)
 
     # Generar AST y guardarlo
@@ -29,13 +29,12 @@ while True:
     afd, afd_dict = generate_afd(root, positions, followpos)
     afd.render(f"{regex_folder}/afd", format="png", cleanup=True)
 
-    # Minimizar el AFD y guardarlo
+   
     minimized_afd = minimize_afd(afd_dict)
     minimized_afd.render(f"{regex_folder}/afd_minimized", format="png", cleanup=True)
 
     print(f"\n🔹 Diagramas generados en: {regex_folder}")
     
-    # Comenzar a validar cadenas hasta que el usuario quiera salir
     while True:
         string = input("\nIngrese una cadena para verificar (si desea cambiar de regex escriba cambio: ")
         if string.lower() == 'cambio':
