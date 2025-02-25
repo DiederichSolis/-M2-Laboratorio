@@ -1,4 +1,4 @@
-from regexaAFD import toAFN
+from Parte2.regexaAFN import toAFN
 from pprint import pp
 
 type AFDState = frozenset[int]

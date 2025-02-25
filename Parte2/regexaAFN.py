@@ -3,24 +3,29 @@ type AFNState = int
 
 
 def toAFN(postfix: str):
+
+  
     stack = []
     for char in postfix:
         match char:
-            case ".": 
+            case ".":  
                 afn2 = stack.pop()
                 afn1 = stack.pop()
 
                 afn1OriginalLength = len(afn1["transitions"])
                 newAccepted = afn2["accepted"] + afn1OriginalLength
 
+           
                 afn1Accepted = afn1["accepted"]
                 initializeOrAppend(
                     afn1["transitions"][afn1Accepted], "_", afn1OriginalLength
                 )
 
+              
+                mappedAFN2Transitions = displaceTransitions(afn2, afn1OriginalLength)
                 afn1["transitions"] += mappedAFN2Transitions
 
-                
+        
                 afn1["accepted"] = newAccepted
                 stack.append(afn1)
 
@@ -46,7 +51,7 @@ def toAFN(postfix: str):
                 afn["transitions"] += mappedAFN1Transitions
                 stack.append(afn)
 
-            case "*":  
+            case "*":  # Cerradura de Kleene (0 o más repeticiones)
                 received = stack.pop()
 
                 afn = newAFN([{"_": [1, 2]}, {}], 1)
@@ -84,6 +89,8 @@ def displaceTransitions(afn, delta: int):
 
 
 def newAFN(transitions: AFNTransitions, accepted: AFNState):
+
+ 
     return {
         "transitions": transitions,
         "accepted": accepted,
