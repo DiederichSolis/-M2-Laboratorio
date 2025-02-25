@@ -1,4 +1,4 @@
-from utils import is_operand, insert_concatenation_operators
+from PreprocesadorRegex import is_operand, insert_concatenation_operators
 
 def to_postfix(infix):
     precedence = {'|': 1, '.': 2, '*': 3}

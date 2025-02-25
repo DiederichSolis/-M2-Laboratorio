@@ -1,4 +1,4 @@
-from utils import is_operand
+from PreprocesadorRegex import is_operand
 import graphviz
 
 class Node:
