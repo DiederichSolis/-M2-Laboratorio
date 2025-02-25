@@ -4,6 +4,8 @@ from arbol import build_syntax_tree, generate_ast_graph
 from afdgenerador import compute_followpos, generate_afd
 from afdminimizador import minimize_afd
 from verificador import validate_string
+import re 
+
 
 print("¡Generador de AFD desde una expresión regular 👨🏻‍💻")
 
@@ -18,9 +20,11 @@ while True:
     root, positions = build_syntax_tree(postfix)
     followpos = compute_followpos(root, positions)
 
-    # Crear carpeta específica para la regex
-    regex_folder = f"resultados_images/{regex}"
+    #Arreglo de caracteres no permitidos
+    regex_sanitized = re.sub(r'[<>:"/\\|?*]', '_', regex) 
+    regex_folder = f"resultados_images/{regex_sanitized}"
     os.makedirs(regex_folder, exist_ok=True)
+
 
     # Generar AST y guardarlo
     generate_ast_graph(root).render(f"{regex_folder}/ast", format="png", cleanup=True)
