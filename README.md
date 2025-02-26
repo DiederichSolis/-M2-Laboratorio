@@ -11,56 +11,52 @@ Dada una expresión regular, el objetivo es convertirla en un autómata finito n
 ### **1. Convertir Expresión Regular de Infija a Postfija**
 
 - Se utiliza el algoritmo *Shunting Yard* para convertir la expresión infija a notación postfix.
-- Se emplea la función `toPostFix` en `shunYard.py`.
+
 
 ---
 
 ### **2. Construcción del Autómata Finito No Determinista (AFN)**
 
-- Se construye un AFN a partir de la notación postfix usando `toAFN` en `regexToAFN.py`.
+- Se construye un AFN a partir de la notación postfix 
 - Se utiliza una pila para evaluar los operadores de concatenación (`.`), unión (`+`) y cierre de Kleene (`*`).
 
 ---
 
 ### **3. Conversión del AFN a AFD**
 
-- Se emplea `fromAFNToAFD` en `AFNToAFD.py`.
 - Se calcula el cierre-ε y se generan los estados del AFD a partir del AFN.
 
 ---
 
 ### **4. Minimizar el AFD**
 
-- Se minimiza el AFD usando `minimize_afd` en `minimizeAFD.py`.
+- Se minimiza el AFD 
 - Se agrupan estados equivalentes y se redefinen las transiciones.
 
 ---
 
 ### **5. Generación Visual de los Autómatas**
 
-- Se generan diagramas de los autómatas usando `generate_graph` en `simulate.py`.
-- Los autómatas se almacenan en `automaton_graphs/`.
+- Se generan diagramas de los autómatas
+- Los autómatas se almacenan 
 
 ---
 
 ### **6. Simulación de Cadenas en el AFD Minimizado**
 
-- Se utiliza `simulate_regexp_process` en `simulate.py`.
+
 - Se verifica si una cadena es aceptada por el autómata minimizado.
 
 ---
 
 ## Compilación del Programa
 
-- Carpeta: `parte2.procesador`
+- Carpeta: `parte2`
+- Ejecutar `procesador.py`
 
 ---
 
 # Construcción de un DFA directamente desde una Expresión Regular (r.e)
-
-## Expresión Regular
-
-Dada la expresión regular **r = (a|b)*abb**, el objetivo es construir un DFA directamente a partir del árbol sintáctico generado.
 
 ---
 
@@ -123,6 +119,11 @@ Dada la expresión regular **r = (a|b)*abb**, el objetivo es construir un DFA di
 ## Compilación del Programa
 
 - Ejecutar `Main.py`
+
+---
+
+## Funcionamiento del Video
+- Link: 
 
 ---
 
