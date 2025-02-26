@@ -123,7 +123,7 @@ Dada una expresión regular, el objetivo es convertirla en un autómata finito n
 ---
 
 ## Funcionamiento del Video
-- Link: 
+- Link: `https://youtu.be/4TbbG8uSJj0`
 
 ---
 
